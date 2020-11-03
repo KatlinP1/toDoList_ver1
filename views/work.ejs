@@ -1,0 +1,25 @@
+<%- include("header.ejs") -%>
+
+    <div class="box" id="heading">
+        <h1><%= date %> </h1>
+    </div>
+
+
+    <div class="box"> 
+        <% for (var i=0; i< workItems.length; i++) { %>
+        <form action="/work/delete" method="POST">
+        <div class="item">
+            <input name="checkbox" value="<%=workItems[i].description %>" type="checkbox" onchange="this.form.submit()">
+            <p> <%=workItems[i].description %> </p>
+        </div>
+        </form>
+        <% } %>
+
+        <form action="/work" class="class" method="POST">
+            <input type="text" name="newTask" placeholder="New work Task" autocomplete="off">
+            <button type="submit">+</button>
+        
+        </form>
+    </div>
+
+<%- include("footer.ejs") -%>
